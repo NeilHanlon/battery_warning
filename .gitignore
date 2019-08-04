@@ -1,2 +1,6 @@
 /battery_warning
 /battery_warning.service
+battery_warning-*-x86_64.pkg.tar.xz
+battery_warning-*/
+pkg/
+src/

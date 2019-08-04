@@ -48,6 +48,7 @@ void monitoring_loop(
 ) {
 	int capacity;
 	char status[STATUS_MAX];
+	char command[70];
 	fscanf(status_file, "%s", status);
 	rewind(status_file);
 	for (;;) {
@@ -55,7 +56,8 @@ void monitoring_loop(
 			fscanf(capacity_file, "%d", &capacity);
 			rewind(capacity_file);
 			if (capacity < threshold) {
-				system("i3-nagbar -m 'Low battery!'");
+				sprintf(command, "notify-send -u critical 'Low battery!' 'Battery is at %d%%' -i battery", capacity);
+				system(command);
 			}
 		}
 		sleep(timeout);
